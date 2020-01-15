@@ -20,11 +20,15 @@ var vm = new Vue({
       { name: "Marvel's The Avengers", thumb: "avengers.jpg", vidsource: "avengers.mp4", description: "will they make black widow action figures this time?" }
     ],
 
+    videotitle:"video title goes here",
+    vidsource: "",
+    videodescription: "video description here",
+
     showDetails: false
   },
 
   methods: {
-    setUserPref(){
+    setUserPrefs(){
       //this is a preferences control, hit the api when ready (or use the component)
       console.log('set user pref here');
     },
@@ -34,6 +38,16 @@ var vm = new Vue({
       console.log('do login / logout on click');
 
       this.user.isLoggedIn = (this.user.isLoggedIn) ? false : true;
+    },
+    showMovieDetails({name, vidsource, description}) {
+      //console.log('show these details:' , movie);
+
+      this.videotitle = name;
+      this.vidsource = vidsource;
+      this.videodescription = description;
+
+      this.showDetails = true;
     }
+
   }
 });
