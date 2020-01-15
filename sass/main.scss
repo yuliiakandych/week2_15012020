@@ -1,0 +1,14 @@
+.planet {
+    //clear: both;
+    margin-bottom: 30px;
+
+    ::after {
+        content: "";
+        clear: both;
+        display: block;
+    }
+
+    .planet-img { width: 150px; float: left; }
+    .planet-name { display: inline-block; margin: 0 0 8px; }
+    .planet-description { margin: 0; }
+}
