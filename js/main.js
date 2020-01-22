@@ -1,4 +1,18 @@
 // todo => use a key to track the current video, or just pass the video in as a ref to the function and grab its source
+Vue.component('player', {
+  template:['movie'],
+ template:`
+ <div>
+  <h3 class="movie-title">{{ movie.videotitle }}</h3>
+  <video :src=" 'video/' + movie.vidsource" controls autoplay></video>
+      <div class="movie-details">
+        <p>{{ movie.videodescription }}</p>
+      </div>
+    </div>
+ `
+})
+
+
 
 var vm = new Vue({
   el: "#app",
@@ -24,10 +38,11 @@ var vm = new Vue({
       { name: "Stranger Things", thumb: "strangerthings.jpg", vidsource: "strangerthings.mp4", description: "don't get lost in the upside down" },
       { name: "Marvel's The Avengers", thumb: "avengers.jpg", vidsource: "avengers.mp4", description: "will they make black widow action figures this time?" }
     ],
-
+movie:{
     videotitle:"video title goes here",
     vidsource: "",
-    videodescription: "video description here",
+    videodescription: "video description here"
+},
 
     showDetails: false
   },
@@ -69,9 +84,9 @@ this.getUserData();
     showMovieDetails({name, vidsource, description}) {
       //console.log('show these details:' , movie);
 
-      this.videotitle = name;
-      this.vidsource = vidsource;
-      this.videodescription = description;
+      this.movie.videotitle = name;
+      this.movie.vidsource = vidsource;
+      this.movie.videodescription = description;
 
       this.showDetails = true;
     }
